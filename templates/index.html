@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='icon' href='images/loco.png'>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+      background: #262626;
+      overflow-x: hidden;
+    }
+
+    .accent {
+      color: #00B0FF !important;
+    }
+
+    .flexSwitch {
+      display: flex;
+    }
+
+    .hero {
+      margin-top: 45vh;
+      transform: translate(0, -50%);
+    }
+
+    .heroFirst {
+      width: 50vw;
+    }
+
+    .heroSecond {
+      width: 30vw;
+      position: absolute;
+      left: 50vw;
+    }
+
+    .w80 {
+      width: 80vw;
+      margin-left: 10vw;
+    }
+
+    h1 {
+      font-size: 6vw;
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+    }
+
+    * {
+      color: #f3f4f5;
+    }
+
+    .wave {
+      position: absolute;
+      top: 100vh;
+      transform: translateY(-100%);
+      left: 0px;
+      right: 0px;
+      z-index: -1;
+    }
+
+    .section2 {
+      background: #f3f4f5;
+      height: 80vh;
+      position: absolute;
+      top: 99vh;
+      width: 100vw;
+      left: 0px;
+    }
+
+    a {
+      padding: 1vw 2vw;
+      border: none;
+      font-size: 1.2vw;
+      border-radius: 500vh;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      transition: 1s ease;
+    }  
+    a:hover {
+      cursor:pointer;
+    }
+
+    .bg-accent {
+      color: #f3f4f5;
+      background: #00B0FF;
+    }
+
+    .bg-accent:hover {
+      background: #525252 !important;
+      color: #f3f4f5 !important;
+    }
+
+    .bg-light {
+      background: #f3f4f5;
+      color: black;
+    }
+
+    .bg-light:hover {
+      background: #525252 !important;
+      color:#f3f4f5 !important;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .mt4vh {
+      margin-top: 4vh;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+
+  <title>Loco</title>
+</head>
+
+<body>
+
+  <div class='flexSwitch w80 hero'>
+    <div class='heroFirst'>
+      <h1>Connecting</h1>
+      <h1 class='accent'>Communities</h1>
+      <div class='flex mt4vh'>
+        <a class='bg-accent' href="signup" id="signup">Sign Up</a>
+        <a class='bg-light' href="/login"id="login" style='margin-left: 1vw;'>Log In</a>
+      </div>
+    </div>
+    <img class='heroSecond' src='images/Community.svg' />
+  </div>
+  <img src='images/wave.svg' class='wave' />
+  <script>
+  </script>
+  <!--div class='section2'>
+
+</div-->
+</body>
+
+</html>

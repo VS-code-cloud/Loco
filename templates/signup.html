@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel='icon' href='images/loco.png'>
+  <title>Loco</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    *{
+	padding: 0;
+	margin: 0;
+      font-family: "Poppins", sans-serif;
+}
+
+.container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #262626;
+
+}
+
+.login_box{
+	background-color:transparent;
+    padding:50px 20px;
+	width: 400px;
+	border-radius: 20px;
+	border: 1px solid #fff;
+	/* filter: blur(8px); */
+	backdrop-filter: blur(4px);
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+    ::-webkit-scrollbar {
+  width: 10px;
+    border-radius: 200vh;
+      transform: translateX(-4vw);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:transparent; 
+ 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+    border-radius: 200vh;
+  
+      transform: translateX(-4vw);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+h1{
+	text-align:center;
+	margin-bottom: 20px;
+	font-size:40px;
+	color:#FFF;
+}
+
+.input_box{
+	width: 90%;
+	margin: auto;
+	height: 40px;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.input_box input{
+	width: 100%;
+    height:40px;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+    padding: 0px 20px;
+	background-color:transparent;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 18px;
+}
+
+.input_box label{
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform:translateY(-50%);
+	font-size:18px;
+	font-weight:500;
+	color: #FFF;
+	transition: .3s;
+}
+
+.icon{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	color: #fff;
+}
+
+.rem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:#fff;
+	font-size: 14px;
+}
+
+.rem input{
+	margin-right: 5px;
+}
+
+.rem a{
+	text-decoration: none;
+	margin-left:5px;
+	color:#fff;
+	font-weight: bold;
+}
+
+.login{
+	display: flex;
+	justify-content: center;
+}
+
+.login button{
+	width: 200px;
+	height:40px;
+	margin-top:20px;
+	border-radius: 20px;
+	font-size:18px;
+	font-weight:500;
+	background-color: #fff;
+	border: none;
+	outline:none;
+	transition: 1s ease;
+}
+
+.reg{
+	display: flex;
+	justify-content: center;
+	margin-top:20px;
+	font-size: 14px;
+	color: #ffff;
+}
+
+.reg a{
+	text-decoration: none;
+	margin-left: 5px;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+.input_box input:focus ~ label,
+.input_box input:valid ~ label{
+	top: 0;
+ }
+
+
+ .login button:hover{
+	cursor: pointer;
+	background-color:transparent;
+	color:#fff;
+	border: 1px solid #fff;
+ }
+  </style>
+</head>
+<body>
+  
+<div class="container">
+	<div class="login_box">
+		<h1>Sign Up</h1>
+    <div class="input_box">
+			<input type="text" id="name" required="">
+			<label for="">Name</label>
+			<ion-icon class="icon " name="person-outline"></ion-icon>
+		</div>
+		<div class="input_box">
+			<input type="text" id="email" required="">
+			<label for="">Email</label>
+			<ion-icon class="icon " name="mail-outline"></ion-icon>
+		</div>
+		<div class="input_box">
+			<input type="password" id="password" required="">
+			<label for="">Password</label>
+			<ion-icon class="icon" name="lock-closed-outline"></ion-icon>
+		</div>
+    <div class="input_box">
+			<input type="password" id="passVerify" required="">
+			<label for="">Confirm Password</label>
+			<ion-icon class="icon" name="lock-closed-outline"></ion-icon>
+		</div>
+    <div class="input_box">
+      <input type="text" id="county" list="counties" />
+      <label for="">County</label>
+      <datalist id="counties">
+      </datalist>
+			<ion-icon class="icon" name="location-outline"></ion-icon>
+		</div>
+		<div class="login">
+			<button id="sign-up">Sign Up</button>
+		</div>
+		<div>
+			<div class="reg">
+				<p>Already have an account? </p>
+				<a href="login">Log in</a>
+			</div>
+		</div>
+	</div>
+ </div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script src="signup.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+  </script>
+   
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script type="text/javascript">
+const firebaseConfig = {
+    apiKey: "AIzaSyBmHql7tcpN_z0pkXpk7yW-Q-Jb0OZnx3o",
+  authDomain: "neighbornet-821b0.firebaseapp.com",
+  projectId: "neighbornet-821b0",
+  storageBucket: "neighbornet-821b0.appspot.com",
+  messagingSenderId: "700762854598",
+  appId: "1:700762854598:web:d5eb09a055416eb7d033c7",
+  measurementId: "G-JW5C1HVW7L"
+}
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const auth = firebaseApp.auth();
+    function handleSignUp() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var passVerify = document.getElementById('passVerify').value;
+      if (!(email&&password&&passVerify&&document.getElementById('county').value&&document.getElementById('name').value)) {
+        alert('One or more missing fields')
+        return;
+      }
+      if (email.length < 4) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a valid password (more than 4 alphanumeric characters).');
+        return;
+      }
+      if (!(password==passVerify)) {
+        alert('Passwords must match!')
+        return;
+      }
+      // Create user with email and pass.
+      firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+      });
+    }
+    function initApp() {
+      // Listening for auth state changes.
+      firebaseApp.auth().onAuthStateChanged(async function(user) {
+        if (user) {
+          const url = 'https://loco-production.randomcodingboy.repl.co/api/user';
+
+const data = `{
+"county": "${document.getElementById("county").value}",
+"email": "${document.getElementById("email").value}",
+"name": "${document.getElementById("name").value}"
+}`;
+          
+
+const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+    },
+    body: data,
+});
+          
+          localStorage.setItem('user', data);
+
+const text = await response.json();
+
+console.log('json', text, JSON.stringify(text));
+          window.location.href="/home"
+        }
+        if (localStorage.getItem("user")) {
+          window.location.href="/home"
+        }
+      });
+
+      document.getElementById('sign-up').addEventListener('click', handleSignUp, false);
+    }
+
+    window.onload = function() {
+      initApp();
+    };
+  </script>
+</body>
+</html>

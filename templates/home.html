@@ -1,0 +1,502 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Loco</title>
+      <link rel='icon' href='images/loco.png'>
+    <script src='https://unpkg.com/micromodal/dist/micromodal.min.js
+'></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+      .flex {
+        display: flex;
+      }
+      .sidebar {
+        width: 20vw;
+        margin-left: 10vw;
+      }
+
+      .main {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 60vw;
+      }
+      body {
+        height: 80vh;
+        margin-top: 10vh;
+      }
+      
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      .post {
+        width:50vw;
+        background: white;
+        border:1px black solid;
+        padding: 2.5vw;
+        border-radius: 0.5vw;
+        height: fit-content;
+      }
+      #sale {
+        display: none; 
+      }
+      h3 {
+        font-weight: 200;
+        background: white;
+        border: 1px black solid;
+        padding: 1vw;
+        border-radius: 3px;
+        width: 60%;
+        transition: 1s ease;
+      }
+      .post {
+        transition: 1s ease;
+      }
+      .post p {
+        line-height: 150%;
+      }
+      .post:not(:first-child) {
+        margin-top: 4vh;
+      }
+      h2 {
+        font-weight: 600;
+      }
+      p {
+        line-height: 80%;
+      }
+      .fc {
+        width: fit-content !important;
+      }
+      h3:hover {
+        cursor: pointer;
+        box-shadow: 5px 5px black 
+      }
+      .post:hover {
+        cursor: pointer;
+        box-shadow:10px 10px black;
+      }
+      #signout {
+        position: fixed;
+        top: 100vh;
+        left: 100vw;
+        transform: translate(-15vw, -8vw);
+        width: 10vw !important;
+        text-align: center;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      .item {
+        width: 25vw;
+        margin-left: 2vw;
+        margin-top: 5vh;
+        background: white;
+        transition: 1s ease;
+        border:1px black solid;
+        padding: 1vw;
+        border-radius: 0.5vw;
+        
+      }
+      .item img {
+        width: 25vw;
+        border-radius: 0.5vw;
+      }
+      .item p {
+        line-height: 150% !important;
+      }
+      .item:hover {
+        box-shadow: 10px 10px black;
+      }
+      .spacer {
+        height: 20vh;
+        width: 100vw;
+        background: transparent;
+      }
+      /**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #00449e;
+  box-sizing: border-box;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,.8);
+}
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+      #itemsContaimax: width;    max-width: 60vw;
+      }
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+.itemsContainer {
+  display:flex;
+}
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}
+      input#search-bar{
+  margin: 0 auto;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+        width: 76vw;
+    margin-left: 2vw;
+    border-radius: 0.5vw;
+  outline: none;
+  &:focus{
+    border: 1px solid #008ABF;
+    transition: 0.35s ease;
+    color: #008ABF;
+    &::-webkit-input-placeholder{
+      transition: opacity 0.45s ease; 
+  	  opacity: 0;
+     }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease; 
+  	  opacity: 0;
+     }
+    &:-ms-placeholder {
+     transition: opacity 0.45s ease; 
+  	 opacity: 0;
+     }    
+   }
+ }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class='flex' id='community'>
+      <div class='sidebar'>
+        <h2>Loco</h2>
+        <h3><ion-icon style='height:2vh' name="caret-forward-outline"></ion-icon>Community</h3>
+        <h3 onclick='document.getElementById("community").style.display="none"; document.getElementById("sale").style.display="flex"'>Outpost</h3>
+        <h2><a>About Me</a></h2>
+        <p><ion-icon class="icon" name="person-outline"></ion-icon> <span id='dispname'></span></p>
+        <script>
+          document.getElementById("dispname").innerText=JSON.parse(localStorage.getItem("user"))['name'];
+          console.log(localStorage.getItem("user")["name"], localStorage.getItem("user"))
+        </script>
+        <p><ion-icon class="icon" name="location-outline"></ion-icon> <span id="county"></span></p>
+        <script>
+          document.getElementById("county").innerText=JSON.parse(localStorage.getItem("user"))['county'];
+        </script>
+        <h3 class='fc' onclick="window.location.href='/post'">Post +</h3>
+      </div>
+      
+      <div id="postsContainer" class='main'>
+        
+      </div>
+      
+    </div>
+  
+      <script>
+        async function initPosts() {
+          const url = 'https://loco-production.randomcodingboy.repl.co/api/post/county/'+encodeURI(JSON.parse(localStorage.getItem("user"))['county']);
+
+const response = await fetch(url);
+const text = await response.json();
+var container = document.getElementById("postsContainer");
+for(var i = 0; i < text.length; i++) {
+    let post = text[i]
+    container.innerHTML+=(`<div class='post'>
+          <strong>${post.title}</strong>
+          <i>By ${post.authorName}</i>
+          <p>${post.content}</p>
+        </div>`);
+}
+    container.innerHTML+=`<div class='spacer'></div>`
+        }
+      initPosts()
+        
+      </script>
+    <div class='flex' id='sale'>
+      <div class='sidebar'>
+        <h2>Loco</h2>
+        <h3 onclick='document.getElementById("community").style.display="flex"; document.getElementById("sale").style.display="none"'>Community</h3>
+        <h3><ion-icon style='height:2vh' name="caret-forward-outline"></ion-icon> Outpost</h3>
+        <h2><a>About Me</a></h2>
+        <p><ion-icon class="icon" name="person-outline"></ion-icon> <span id='odispname'></span></p>
+        <script>
+          document.getElementById("odispname").innerText=JSON.parse(localStorage.getItem("user"))['name'];
+          console.log(localStorage.getItem("user")["name"], localStorage.getItem("user"))
+        </script>
+        <p><ion-icon class="icon" name="location-outline"></ion-icon> <span id="ocounty"></span></p>
+        <script>
+          document.getElementById("ocounty").innerText=JSON.parse(localStorage.getItem("user"))['county'];
+        </script>
+        <h3 class='fc' onclick="window.location.href='/sell'">Item +</h3>
+      </div>
+            
+      <div class='main'>
+        <input type="text" id="search-bar" placeholder="Search for images">
+        <div id='itemsContainer'></div>
+      </div>
+      
+      <script>
+        async function initItems() {
+          const url = 'https://loco-production.randomcodingboy.repl.co/api/item/county/'+encodeURI(JSON.parse(localStorage.getItem("user"))['county']);
+document.getElementById("itemsContainer").innerHTML = "";
+const response = await fetch(url);
+const text = await response.json();
+console.log('this is text', text, typeof text);
+          console.log('doc', document.getElementById("itemsContainer"))
+var container = document.getElementById("itemsContainer");
+for(var i = 0; i < text.length; i++) {
+    let item = text[i];
+    search=document.getElementById("search-bar").value;
+  if (search.length == 0||!search) {
+    console.log('pass')
+    container.innerHTML+=(`<div onclick='document.getElementById("selllocation").innerHTML=" ${item.county}"; document.getElementById("sellname").innerHTML=" ${item.sellerName}";document.getElementById("sellemail").innerHTML="${item.sellerEmail}";document.getElementById("sellitem").innerHTML="${item.label}";document.getElementById("sellprice").innerHTML="\$${item.price}";MicroModal.show("modal-1");' class='item'>
+          <img src=${item.image}/><br/>
+          <p>
+          <strong>${item.label}</strong> <i>(\$${item.price})</i>: 
+         ${item.description} - <i>${item.sellerName}</i></p>
+        </div>`);
+  } else {
+    if (item.county?.includes(search)||item.label?.includes(search)||item.sellerName?.includes(search)||item.email?.includes(search)||item.description?.includes(search)) {
+      container.innerHTML+=(`<div onclick='document.getElementById("selllocation").innerHTML=" ${item.county}"; document.getElementById("sellname").innerHTML=" ${item.sellerName}";document.getElementById("sellemail").innerHTML="${item.email}";document.getElementById("sellitem").innerHTML="${item.label}";document.getElementById("sellprice").innerHTML="${item.cost}";MicroModal.show("modal-1");' class='item'>
+          <img src=${item.image}/><br/>
+          <p>
+          <strong>${item.label} - \$${item.price}</strong>: 
+         ${item.description} - <i>${item.sellerName}</i></p>
+        </div>`);
+    } else {
+      console.log('fail')
+    }
+  }
+    
+} 
+    container.innerHTML+=`<div class='spacer'></div>`
+        }
+      initItems()
+
+        document.getElementById("search-bar").onchange = () => {
+          initItems();
+        }
+        
+      </script>
+    </div>
+    <h3 id="signout">Sign Out</h3>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js" integrity="sha512-uWk2ZXl3GVrq6DZsrL5dSg1S/F3MNQ9VaDFigqXOoKUnWG58UxOuJGfTrzh5KjpoBvPiFniL2PahU2HUTFMJXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script type="text/javascript">
+const firebaseConfig = {
+    apiKey: "AIzaSyBmHql7tcpN_z0pkXpk7yW-Q-Jb0OZnx3o",
+  authDomain: "neighbornet-821b0.firebaseapp.com",
+  projectId: "neighbornet-821b0",
+  storageBucket: "neighbornet-821b0.appspot.com",
+  messagingSenderId: "700762854598",
+  appId: "1:700762854598:web:d5eb09a055416eb7d033c7",
+  measurementId: "G-JW5C1HVW7L"
+}
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const auth = firebaseApp.auth();
+    function handleSignOut() {
+      firebaseApp.auth().signOut().then(localStorage.removeItem("user")).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+      });
+    }
+    function initApp() {
+      // Listening for auth state changes.
+      firebaseApp.auth().onAuthStateChanged(async function(user) {
+        if (!localStorage.getItem("user")) {
+          window.location.href="/"
+        } else {
+          console.log('thpoth', localStorage.getItem("user"))
+        }
+      });
+
+      document.getElementById('signout').addEventListener('click', handleSignOut, false);
+    }
+
+    window.onload = function() {
+      initApp();
+    };
+  </script>
+ <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+            Get In Touch
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main class="modal__content" id="modal-1-content">
+          <p>
+            <ion-icon name='bag-outline'></ion-icon>
+            <span id='sellitem'></span>
+          </p>
+          <p>
+            <ion-icon name='pricetags-outline'></ion-icon>
+            <span id='sellprice'></span>
+          </p>
+          <p>
+            <ion-icon name='person-outline'></ion-icon>
+            From <span id='sellname'></span>
+          </p>
+          <p>
+            <ion-icon name='location-outline'></ion-icon>
+            <span id='selllocation'></span>
+          </p>
+          <p>
+            <ion-icon name='mail-outline'></ion-icon>
+            <span id='sellemail'></span>
+          </p>
+        </main>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+        
+  </body>
+</html>

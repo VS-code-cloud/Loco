@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loco</title>
+  <link rel='icon' href='images/loco.png'>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    *{
+	padding: 0;
+	margin: 0;
+      font-family: "Poppins", sans-serif;
+}
+
+.container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #262626;
+
+}
+
+.login_box{
+	background-color:transparent;
+    padding:50px 20px;
+	width: 400px;
+	border-radius: 10px;
+	border: 1px solid #fff;
+	/* filter: blur(8px); */
+	backdrop-filter: blur(4px);
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+    ::-webkit-scrollbar {
+  width: 10px;
+    border-radius: 200vh;
+      transform: translateX(-4vw);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:transparent; 
+ 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+    border-radius: 200vh;
+  
+      transform: translateX(-4vw);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+h1{
+	text-align:center;
+	margin-bottom: 20px;
+	font-size:40px;
+	color:#FFF;
+}
+
+.input_box{
+	width: 90%;
+	margin: auto;
+	height: 40px;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.input_box input{
+	width: 100%;
+    height:40px;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+    padding: 0px 20px;
+	background-color:transparent;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 18px;
+}
+
+.input_box label{
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform:translateY(-50%);
+	font-size:18px;
+	font-weight:500;
+	color: #FFF;
+	transition: .3s;
+}
+
+.icon{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	color: #fff;
+}
+
+.rem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:#fff;
+	font-size: 14px;
+}
+
+.rem input{
+	margin-right: 5px;
+}
+
+.rem a{
+	text-decoration: none;
+	margin-left:5px;
+	color:#fff;
+	font-weight: bold;
+}
+
+.login{
+	display: flex;
+	justify-content: center;
+}
+
+.login button{
+	width: 200px;
+	height:40px;
+	margin-top:20px;
+	border-radius: 20px;
+	font-size:18px;
+	font-weight:500;
+	background-color: #fff;
+	border: none;
+	outline:none;
+	transition: 1s ease;
+}
+
+.reg{
+	display: flex;
+	justify-content: center;
+	margin-top:20px;
+	font-size: 14px;
+	color: #ffff;
+}
+
+.reg a{
+	text-decoration: none;
+	margin-left: 5px;
+	color: #fff;
+	font-weight: bold;
+}
+
+    .inputfile-box {
+  position: relative;
+}
+
+.inputfile {
+  display: none;
+}
+
+.container2 {
+  display: inline-block;
+  width: 100%;
+}
+
+.file-box {
+  display: inline-block;
+  width: 80%;
+  border-radius: .8vw;
+  border: 1px solid white;
+  padding: 5px 0px 5px 5px;
+  box-sizing: border-box;
+  height: calc(2rem - 2px);
+      margin-left: 20px;
+  color: white;
+    font-family: "Poppins", sans-serif;
+    padding-left: 20px !important;
+  font-weight: 100;
+}
+
+.file-button {
+  background: #00B0FF;
+    padding: 3px 15px;
+    position: absolute;
+    border: 1px solid white;
+    top: 0px;
+    right: 20px;
+    border-radius: 0.8vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    color: white;
+}
+
+.input_box input:focus ~ label,
+.input_box input:valid ~ label{
+	top: 0;
+ }
+
+
+ .login button:hover{
+	cursor: pointer;
+	background-color:transparent;
+	color:#fff;
+	border: 1px solid #fff;
+ }
+  </style>
+</head>
+<body>
+  
+<div class="container">
+	<div class="login_box">
+		<h1>List for Sale</h1>
+    <div class="input_box">
+			<input type="text" id="label" required="">
+			<label for="">Item Label</label>
+			<ion-icon class="icon " name="albums-outline"></ion-icon>
+		</div>
+		<div class="input_box">
+			<input type="text" id="description" required="">
+			<label for="">Description</label>
+			<ion-icon class='icon' name="pencil-outline"></ion-icon>
+		</div>
+    <div class="input_box">
+			<input type="text" id="price" required="">
+			<label for="">Price (USD)</label>
+			<ion-icon class='icon' name="pricetags-outline"></ion-icon>
+		</div>
+    <div class="input_box">
+			<input type="text" id="image" required="">
+			<label for="">Preview Image (URL)</label>
+      <ion-icon class='icon' name="camera-outline"></ion-icon>
+		</div>
+
+		<div class="login">
+			<button id="listOnline">List Online</button>
+		</div>
+	</div>
+ </div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+  </script>
+   
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script type="text/javascript">
+    async function handleItem() {
+      var label = document.getElementById('label').value;
+      var image = document.getElementById('image').value;
+      if (!image || image.length == 0) {
+        alert("Please enter an image link")
+        return
+      }
+      if (!image.toLowerCase().endsWith("png") && !image.toLowerCase().endsWith("jpg") && !image.toLowerCase().endsWith("svg") && !image.toLowerCase().endsWith("jpeg")) {
+        alert("Please enter an image link")
+        return
+      } 
+  
+      if (image.includes('ebay')) {
+        alert("Please avoid ebay links")
+        return;
+      }
+      var description = document.getElementById('description').value;
+      if (!description ||description.length==0) {
+        alert('Please enter a description.');
+        return;
+      }
+      var price = Number(document.getElementById('price').value);
+      if (!price ||price==0 || price<0) {
+        alert('Please enter a price.');
+        return;
+      }
+      if (!label || label.length==0) {
+        alert('Please enter an item label.');
+        return;
+      }
+      var user
+      try {
+        user = JSON.parse(localStorage.getItem('user'))
+      } catch (error) {
+        console.log('error')
+        alert('There was an error authenticating you')
+        return;
+      }
+      
+      if (!user||!user.uid||!user.county) {
+        console.log('localstorageuser', JSON.parse(localStorage.getItem('user')))
+        alert('Invalid, please sign in first.')
+        return
+      }
+const url = 'https://loco-production.randomcodingboy.repl.co/api/item';
+      //**ADD IMAGE LATER**
+const data = `{
+"label": "${label}",
+  "description": "${description}",
+  "image": "${image}",
+  "sellerUid": "${user.uid}",
+  "county": "${user.county}",
+  "sellerName": "${user.name}",
+  "sellerEmail": "${user.email}",
+  "price": "${price}"
+}`;
+console.log('this is data', data)
+const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+    },
+    body: data,
+});
+const text = await response.text();
+console.log('json', text, JSON.stringify(text));
+          window.location.href="/home"
+}
+      document.getElementById('listOnline').addEventListener('click', handleItem, false)
+  </script>
+</body>
+</html>
